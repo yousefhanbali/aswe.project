@@ -1,9 +1,23 @@
-var mysql      = require('mysql');
-const databaseConnection = require('./config/database.json')
-var connection = mysql.createConnection(databaseConnection); 
-connection.connect();
-connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
-    if (error) throw error;
-    console.log('The solution is: ', results[0].solution);
-  });
-connection.end();
+require('dotenv').config("./.env");
+
+const express = require("express");
+const app = express();
+const port = process.env.PORT || 3000;
+const databaseConnection = require('./database/connection.js');
+
+app.set('db',databaseConnection);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+const loginRouter = require('./routers/login.js');
+app.use('/', loginRouter);
+
+const signUpRouter = require('./routers/signup.js');
+app.use('/',signUpRouter);
+
+const jobsRouter = require('./routers/jobs.js');
+app.use('/', jobsRouter);
+
+app.listen(port, () => {
+  console.log("API running on localhost on " + port);
+});
