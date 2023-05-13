@@ -1,9 +1,10 @@
 const Express = require('express');
 const Router = Express.Router();
 const Validator = require('../middlewares/signUpInputValidation');
+const UserExist = require('../middlewares/UserExist.js');
 const sha256 = require('js-sha256').sha256;
 
-Router.post('/api/signup/employer',Validator,function(req, res, next){
+Router.post('/api/signup/employer', Validator, UserExist,function(req, res, next){
     // Validating 
     if(!req.body.CompanyName){
         return res.status(400).json({"Error": "There is insufficient information, please try again"});
@@ -33,7 +34,7 @@ function(req, res){
     });
 });
 
-Router.post('/api/signup/seeker',Validator,function(req, res, next){
+Router.post('/api/signup/seeker', Validator, UserExist,function(req, res, next){
     // Inserting into Login Table
     req.app.get('db').query('insert into log_in(username, email, password) values(?,?,?)',
     [req.body.Username, req.body.Email, sha256(req.body.Password)],
