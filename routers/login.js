@@ -36,29 +36,51 @@ Router.post('/api/login',
                     if(result.length != 0){
                         return res.status(200).json({
                             type: 'Employer',
+                            id:result[0].E_id,
                             user: res.locals.user,
-                            token: JWT.sign({
-                                type: 'Employer',
-                                user: res.locals.user
-                            },process.env['JWT_SECRET'],
-                            {
-                                expiresIn: process.env['TOKEN_LIFETIME']+"m"
-                            })
+                            token: JWT.sign(
+                                {
+                                    type: 'Employer',
+                                    id:result[0].E_id,
+                                    user: res.locals.user
+                                },
+                                process.env['JWT_SECRET'],
+                                {
+                                    expiresIn: process.env['TOKEN_LIFETIME']+"m"
+                                }
+                            )
                         });
                     }
-                    else return res.status(200).json({
+                }
+            }
+    );
+    req.app.get('db').query(
+        'SELECT * FROM `job_seekers` where email = ?',
+        [res.locals.user.email],
+        function(err, result, fields){
+            if(err){
+                return res.status(500).json({"Error":err});
+            }else{
+                if(result.length != 0){
+                    return res.status(200).json({
                         type: 'JobSeeker',
+                        id: result[0].JS_id,
                         user: res.locals.user,
-                        token: JWT.sign({
-                            type: 'JobSeeker',
-                            user: res.locals.user
-                        },process.env['JWT_SECRET'],
-                        {
-                            expiresIn: process.env['TOKEN_LIFETIME']+"m"
-                        })
+                        token: JWT.sign(
+                            {
+                                type: 'JobSeeker',
+                                id: result[0].JS_id,
+                                user: res.locals.user
+                            },
+                            process.env['JWT_SECRET'],
+                            {
+                                expiresIn: process.env['TOKEN_LIFETIME']+"m"
+                            }
+                        )
                     });
                 }
             }
+        }
     )
   });
 
