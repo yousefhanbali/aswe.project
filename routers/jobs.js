@@ -82,6 +82,22 @@ Router.get('/api/jobs/search', async function(req, res){
     });    
 });
 
+Router.get('/api/jobs', auth, employerCheck, function(req, res) {
+    req.app.get('db').query(
+        'SELECT * FROM jobs WHERE E_id = ?',
+        [res.locals.user.id],
+        function(err, result){
+            if(err){
+                return res.status(500).json({"Error":err});
+            }else{
+                if(result.length == 0){
+                    return res.status(404).send('Job not found');
+                }else{
+                    return res.status(200).json(result);
+                }
+            }
+        });
+});
 
 Router.get('/api/jobs/:id', auth, function(req, res) {
     req.app.get('db').query(
@@ -166,8 +182,6 @@ Router.put('/api/jobs/:id', auth, employerCheck, checkJobExist, checkJobOwnershi
         }
         query += ' WHERE J_id = '+req.params.id;
 
-        console.log(query);
-        console.log(list);
         req.app.get('db').query(query, list, function(err, result){
             if(err){
                 return res.status(500).json({"Error":err});
