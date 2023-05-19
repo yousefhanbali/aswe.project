@@ -2,13 +2,14 @@ const Express = require('express');
 const JWT = require('jsonwebtoken');
 const multer = require("multer");
 const { resume } = require('../database/connection');
+const auth = require('../middlewares/auth.js');
 const Router = Express.Router();
 
 const upload = multer();
 
 
 
-Router.post('/api/jobs/:jobId/apply', upload.array("files",2), async (req, res) => {
+Router.post('/api/jobs/:jobId/apply', auth,upload.array("files",2), async (req, res) => {
     try {
       const { jobId } = req.params;
       const  coverLetter  = req.files[1].buffer;
@@ -30,8 +31,8 @@ Router.post('/api/jobs/:jobId/apply', upload.array("files",2), async (req, res) 
     const status = 'Submitted';
     const query = `INSERT INTO job_applications (J_id, JS_id, resume_url, cover_title, date_applied, status)
       VALUES (?, ?, ?, ?, ?, ?)`;
-      console.log(jobId, 1, resume, coverLetter, dateApplied, status);
-    const values = [jobId, 1, resume, coverLetter, dateApplied, status];
+      console.log(jobId, res.locals.user.id, resume, coverLetter, dateApplied, status);
+    const values = [jobId, res.locals.user.id, resume, coverLetter, dateApplied, status];
     await req.app.get("db").query(query, values, function(error,result){
         if (error){
             console.log(error);
@@ -50,7 +51,7 @@ Router.post('/api/jobs/:jobId/apply', upload.array("files",2), async (req, res) 
 
 
 // Retrieve a job application by ID
-Router.get('/api/job_applications/:applicationId', async (req, res) => {
+Router.get('/api/job_applications/:applicationId', auth, async (req, res) => {
   try {
     const { applicationId } = req.params;
 
@@ -75,7 +76,7 @@ Router.get('/api/job_applications/:applicationId', async (req, res) => {
 
 
 // Update a job application
-Router.put('/api/job_applications/:applicationId', upload.array("files",2), async (req, res) => {
+Router.put('/api/job_applications/:applicationId', auth, upload.array("files",2), async (req, res) => {
     try {
       const { applicationId } = req.params;
       const  coverLetter  = req.files[1].buffer;
@@ -99,7 +100,7 @@ Router.put('/api/job_applications/:applicationId', upload.array("files",2), asyn
 
 
   // Delete a job application
-Router.delete('/api/job_applications/:applicationId', async (req, res) => {
+Router.delete('/api/job_applications/:applicationId', auth, async (req, res) => {
     try {
       const { applicationId } = req.params;
   
@@ -118,5 +119,3 @@ Router.delete('/api/job_applications/:applicationId', async (req, res) => {
   });
   
   module.exports = Router;
-
-
