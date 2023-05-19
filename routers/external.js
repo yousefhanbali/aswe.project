@@ -5,14 +5,14 @@ const router = express.Router();
 
 
 router.get('/posts', async (req, res) => {
-  const { id } = req.query;
-  console.log(id);
+  const { bs } = req.query;
+  console.log(bs);
 
   try {
     const posts = await indeedJobsClient.getPosts();
 
-    // Filter the posts based on the ID
-    const filteredPosts = posts.filter((post) => post.id == id);
+    // Filter the posts based on the bs
+    const filteredPosts = posts.filter((post) => post.company.bs.includes(bs));
 
     res.json(filteredPosts);
   } catch (error) {
