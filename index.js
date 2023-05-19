@@ -18,6 +18,9 @@ app.use('/',signUpRouter);
 const jobsRouter = require('./routers/jobs.js');
 app.use('/', jobsRouter);
 
+const external = require('./routers/external.js');
+app.use('/', external);
+
 app.listen(port, () => {
   console.log("API running on localhost on " + port);
 });
