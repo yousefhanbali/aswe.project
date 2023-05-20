@@ -62,14 +62,17 @@ Router.get('/api/jobs/search', async function(req, res){
                     (entry)=>{
                         for(i=0; i<listedSearchProps.length; i++){
                             console.log(req.query[listedSearchProps[i]]);
-                            if(!Object.keys(entry).includes(listedSearchProps[i]))
+                            if(!Object.keys(entry).includes(listedSearchProps[i])){
                                 continue;
-                            
-                            if(req.query[listedSearchProps[i]] == entry[listedSearchProps[i]]){
-                                return true;
                             }
-                            if(entry[listedSearchProps[i]].includes(req.query[listedSearchProps[i]])){
-                                return true;
+                            if(!isNaN(req.query[listedSearchProps[i]])){
+                                if(req.query[listedSearchProps[i]] == entry[listedSearchProps[i]]){
+                                    return true;
+                                }
+                            }else{
+                                if(entry[listedSearchProps[i]].toLowerCase().includes(req.query[listedSearchProps[i]].toLowerCase())){
+                                    return true;
+                                }
                             }
 
                         }
