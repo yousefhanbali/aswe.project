@@ -18,12 +18,17 @@ app.use('/',signUpRouter);
 const jobsRouter = require('./routers/jobs.js');
 app.use('/', jobsRouter);
 
+const applicants = require('./routers/applicants.js');
+app.use('/',applicants);
+
 const LinkedInAPI = require('./routers/LinkedInAPI.js');
-app.use('/LinkedInAPI', LinkedInAPI);
+app.use('/api/external/linkedin', LinkedInAPI);
+
 const IndeedAPI = require('./routers/IndeedAPI.js');
-app.use('/IndeedAPI', IndeedAPI);
+app.use('/api/external/indeed', IndeedAPI);
+
 const salaryApi = require('./routers/JobSalaryDataAPI.js');
-app.use('/salaryApi', salaryApi);
+app.use('/api/external/salary', salaryApi);
 
 app.listen(port, () => {
   console.log("API running on localhost on " + port);
