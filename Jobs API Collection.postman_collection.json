@@ -1,0 +1,488 @@
+{
+	"info": {
+		"_postman_id": "a29c76ff-70b1-45b9-8bd9-df6159d3bb8b",
+		"name": "Jobs API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21849627"
+	},
+	"item": [
+		{
+			"name": "Sign Up Employer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Username\":\"yousef2\",\r\n    \"Password\":\"12345678\",\r\n    \"Email\":\"yousefhanbali4@test.com\",\r\n    \"Name\":\"YOusef Hanbali\",\r\n    \"Phone\":\"0595121540\",\r\n    \"CompanyName\":\"XNGAGE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/signup/employer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"signup",
+						"employer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign Up JobSeeker",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Username\":\"yousef1\",\r\n    \"Password\":\"12345678\",\r\n    \"Email\":\"yousefhanbali@test.com\",\r\n    \"Name\":\"YOusef Hanbali\",\r\n    \"Phone\":\"0595121540\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/signup/seeker",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"signup",
+						"seeker"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Username\":\"yousef2\",\r\n    \"Password\":\"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Jobs CREATE",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiRW1wbG95ZXIiLCJpZCI6MywidXNlciI6eyJsZ19pZCI6NiwidXNlcm5hbWUiOiJ5b3VzZWYyIiwiZW1haWwiOiJ5b3VzZWZoYW5iYWxpNEB0ZXN0LmNvbSIsInBhc3N3b3JkIjoiZWY3OTdjODExOGYwMmRmYjY0OTYwN2RkNWQzZjhjNzYyMzA0OGM5YzA2M2Q1MzJjYzk1YzVlZDdhODk4YTY0ZiJ9LCJpYXQiOjE2ODQ0MjU5ODQsImV4cCI6MTY4NDQ4NTk4NH0.Cxr1qMGsZLjq5QWll3LWetih13xuoPL2XU3mVZ29OuM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"Job1\",\r\n    \"description\":\"Desc\",\r\n    \"requirement\":\"T\",\r\n    \"salary_range_min\":\"100\",\r\n    \"salary_range_max\":\"1000\",\r\n    \"location\":\"Nablus\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/jobs/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"jobs",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Jobs READ",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiRW1wbG95ZXIiLCJpZCI6MywidXNlciI6eyJsZ19pZCI6NiwidXNlcm5hbWUiOiJ5b3VzZWYyIiwiZW1haWwiOiJ5b3VzZWZoYW5iYWxpNEB0ZXN0LmNvbSIsInBhc3N3b3JkIjoiZWY3OTdjODExOGYwMmRmYjY0OTYwN2RkNWQzZjhjNzYyMzA0OGM5YzA2M2Q1MzJjYzk1YzVlZDdhODk4YTY0ZiJ9LCJpYXQiOjE2ODQ0MjU5ODQsImV4cCI6MTY4NDQ4NTk4NH0.Cxr1qMGsZLjq5QWll3LWetih13xuoPL2XU3mVZ29OuM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/jobs/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"jobs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Job Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "B e",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/jobs/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"jobs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Job Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"Test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/jobs/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"jobs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Job Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/jobs/search?title=j&salary_range_max=100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"jobs",
+						"search"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "j"
+						},
+						{
+							"key": "salary_range_max",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Job Apply",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiSm9iU2Vla2VyIiwiaWQiOjEsInVzZXIiOnsibGdfaWQiOjMsInVzZXJuYW1lIjoiYWtlcjEiLCJlbWFpbCI6Im1vbW9ha2VyMkB0ZXN0LmNvbSIsInBhc3N3b3JkIjoiMDc4MWYwMjFlNGZhZWY0NjIxYmUwNzk5M2UxNTZhM2RkNzk3Yzc0NDM0MDc4YzJjY2Y3Nzg2NDE3MjQ5YzdjZCJ9LCJpYXQiOjE2ODQ2NzE1NzgsImV4cCI6MTY4NDczMTU3OH0.GL1AgsBylVt7OcZJUzBKlAItDHza7KwYEZcfErW8Ds4"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/mr.t/OneDrive/Desktop/test2.txt"
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/mr.t/OneDrive/Desktop/test3.txt"
+						},
+						{
+							"key": "status",
+							"value": "masa",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/jobs/1/apply",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"jobs",
+						"1",
+						"apply"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Job Application GET",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiSm9iU2Vla2VyIiwiaWQiOjEsInVzZXIiOnsibGdfaWQiOjMsInVzZXJuYW1lIjoiYWtlcjEiLCJlbWFpbCI6Im1vbW9ha2VyMkB0ZXN0LmNvbSIsInBhc3N3b3JkIjoiMDc4MWYwMjFlNGZhZWY0NjIxYmUwNzk5M2UxNTZhM2RkNzk3Yzc0NDM0MDc4YzJjY2Y3Nzg2NDE3MjQ5YzdjZCJ9LCJpYXQiOjE2ODQ2NzE1NzgsImV4cCI6MTY4NDczMTU3OH0.GL1AgsBylVt7OcZJUzBKlAItDHza7KwYEZcfErW8Ds4"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/job_applications/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"job_applications",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Job Application DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiSm9iU2Vla2VyIiwiaWQiOjEsInVzZXIiOnsibGdfaWQiOjMsInVzZXJuYW1lIjoiYWtlcjEiLCJlbWFpbCI6Im1vbW9ha2VyMkB0ZXN0LmNvbSIsInBhc3N3b3JkIjoiMDc4MWYwMjFlNGZhZWY0NjIxYmUwNzk5M2UxNTZhM2RkNzk3Yzc0NDM0MDc4YzJjY2Y3Nzg2NDE3MjQ5YzdjZCJ9LCJpYXQiOjE2ODQ2NzE1NzgsImV4cCI6MTY4NDczMTU3OH0.GL1AgsBylVt7OcZJUzBKlAItDHza7KwYEZcfErW8Ds4"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/job_applications/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"job_applications",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Job Application Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiSm9iU2Vla2VyIiwiaWQiOjEsInVzZXIiOnsibGdfaWQiOjMsInVzZXJuYW1lIjoiYWtlcjEiLCJlbWFpbCI6Im1vbW9ha2VyMkB0ZXN0LmNvbSIsInBhc3N3b3JkIjoiMDc4MWYwMjFlNGZhZWY0NjIxYmUwNzk5M2UxNTZhM2RkNzk3Yzc0NDM0MDc4YzJjY2Y3Nzg2NDE3MjQ5YzdjZCJ9LCJpYXQiOjE2ODQ2NzE1NzgsImV4cCI6MTY4NDczMTU3OH0.GL1AgsBylVt7OcZJUzBKlAItDHza7KwYEZcfErW8Ds4"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/mr.t/OneDrive/Desktop/test2.txt"
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/mr.t/OneDrive/Desktop/test3.txt"
+						},
+						{
+							"key": "status",
+							"value": "masa",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/job_applications/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"job_applications",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Salary External API Integration",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/external/salary?job_title=nodejs developer&location=new york, usa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"external",
+						"salary"
+					],
+					"query": [
+						{
+							"key": "job_title",
+							"value": "nodejs developer"
+						},
+						{
+							"key": "location",
+							"value": "new york, usa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Indeed External API Integration",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/external/indeed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"external",
+						"indeed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Linked In External API Integration",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/external/linkedin?keywords=python&location=New+York&page=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"external",
+						"linkedin"
+					],
+					"query": [
+						{
+							"key": "keywords",
+							"value": "python"
+						},
+						{
+							"key": "location",
+							"value": "New+York"
+						},
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
