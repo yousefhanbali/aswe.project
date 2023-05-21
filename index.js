@@ -23,7 +23,7 @@ app.use('/LinkedInAPI', LinkedInAPI);
 const IndeedAPI = require('./routers/IndeedAPI.js');
 app.use('/IndeedAPI', IndeedAPI);
 const salaryApi = require('./routers/JobSalaryDataAPI.js');
-app.use('/IndeedAPI', salaryApi);
+app.use('/salaryApi', salaryApi);
 
 app.listen(port, () => {
   console.log("API running on localhost on " + port);
