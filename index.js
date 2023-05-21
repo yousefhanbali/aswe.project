@@ -18,7 +18,7 @@ app.use('/',signUpRouter);
 const jobsRouter = require('./routers/jobs.js');
 app.use('/', jobsRouter);
 
-const external = require('./routers/external.js');
+const external = require('./routers/LinkedInAPI.js');
 app.use('/', external);
 
 app.listen(port, () => {
