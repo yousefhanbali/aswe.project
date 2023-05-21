@@ -18,8 +18,10 @@ app.use('/',signUpRouter);
 const jobsRouter = require('./routers/jobs.js');
 app.use('/', jobsRouter);
 
-const external = require('./routers/LinkedInAPI.js');
-app.use('/', external);
+const LinkedInAPI = require('./routers/LinkedInAPI.js');
+app.use('/', LinkedInAPI);
+const IndeedAPI = require('./routers/IndeedAPI.js');
+app.use('/', IndeedAPI);
 
 app.listen(port, () => {
   console.log("API running on localhost on " + port);
